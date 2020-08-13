@@ -1,3 +1,11 @@
+---
+page_type: sample
+languages: typescript
+products: azure-iot-central
+urlFragment: iot-central-file-upload
+description: Sample code that demonstrates how a device can use IoT Central to upload a file to cloud storage.
+---
+
 # IoT Central file upload device sample
 This sample demonstrates how to use the file upload feature of IoT Hub from within an IoT Central app. For a full description of the IoT Central File Upload feature see the [documentation online](https://apps.azureiotcentral.com).
 
