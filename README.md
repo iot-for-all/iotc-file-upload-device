@@ -2,7 +2,7 @@
 page_type: sample
 languages: typescript
 products: azure-iot-central
-urlFragment: iot-central-file-upload
+urlFragment: iotc-file-upload-device
 description: Sample code that demonstrates how a device can use IoT Central to upload a file to cloud storage.
 ---
 
