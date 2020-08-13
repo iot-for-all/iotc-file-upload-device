@@ -21,7 +21,7 @@ This sample demonstrates how to use the file upload feature of IoT Hub from with
 ## Clone the repository
 If you haven't already cloned the repository, use the following command to clone it to a suitable location on your local machine:
 ```
-git clone https://github.com/sseiber/iotc-file-upload-device
+git clone https://github.com/iot-for-all/iotc-file-upload-device
 ```
 Open the cloned repository with VS Code.
 
