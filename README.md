@@ -1,7 +1,7 @@
 ---
 page_type: sample
 name: "IoT Central file upload device sample"
-description: Sample code that demonstrates how a device can use IoT Central to upload a file to cloud storage.
+description: "Sample code that demonstrates how a device can use IoT Central to upload a file to cloud storage."
 languages:
 - typescript
 products:
