@@ -46,7 +46,7 @@ After importing the device template you need to create a view on the telemetry a
 * Select the `Upload Image` telemtry and then the "Add tile" button at the bottom. This telemetry is an event that will indicated when a file upload has occurred.
 * Select the "Save" option for this view.
 
-Create another view for *Editing device and cloud data* and include the `Upload Folder Name` property. Name this view *Settings* and save it.
+Create another view for *Editing device and cloud data*
 * Select the "Views" option
 * Select the "Editing device and cloud data" option
 * For the "Form name" enter "Upload options"
