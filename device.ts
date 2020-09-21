@@ -30,6 +30,12 @@ const CommandResponseStatusCode = 'COMMANDRESPONSE_STATUSCODE';
 const CommandResponseMessage = 'COMMANDRESPONSE_MESSAGE';
 const CommandResponseData = 'COMMANDRESPONSE_DATA';
 
+interface IFileUploadResponse {
+    statusCode: number;
+    message: string;
+    filename: string;
+}
+
 interface IDeviceSettings {
     [SettingFilenameSuffix]: string;
 }
@@ -234,8 +240,12 @@ export class IoTCentralDevice {
         return fileStats;
     }
 
-    private async uploadFile(filePath: string): Promise<string> {
-        let result = '';
+    private async uploadFile(filePath: string): Promise<IFileUploadResponse> {
+        const result: IFileUploadResponse = {
+            statusCode: 202,
+            message: '',
+            filename: ''
+        };
 
         try {
             const blobNameSuffix = this.deviceSettings[SettingFilenameSuffix];
@@ -253,12 +263,14 @@ export class IoTCentralDevice {
                 [EventUploadFile]: `${blobFilename}`
             });
 
-            this.log('File upload succeeded');
+            result.message = `deviceId: '${this.deviceId}' uploaded a file named '${blobFilename}' to the Azure storage container`;
+            this.log(result.message);
 
-            result = blobFilename;
+            result.filename = blobFilename;
         }
         catch (ex) {
-            this.log(`Error during deviceClient.uploadToBlob: ${ex.message}`);
+            result.message = `Error during deviceClient.uploadToBlob: ${ex.message}`;
+            this.log(result.message);
         }
 
         return result;
@@ -268,14 +280,14 @@ export class IoTCentralDevice {
     private async uploadFileCommand(commandRequest: DeviceMethodRequest, commandResponse: DeviceMethodResponse) {
         this.log('Received upload file command');
 
-        const blobFilename = await this.uploadFile('./datafile.json');
+        const fileUploadResult = await this.uploadFile('./datafile.json');
 
         await commandResponse.send(200);
         await this.updateDeviceProperties({
             [CommandUploadFile]: {
                 value: {
                     [CommandResponseStatusCode]: 202,
-                    [CommandResponseMessage]: `deviceId: ${this.deviceId} upload a file to the Azure storage container at: ${blobFilename}`,
+                    [CommandResponseMessage]: fileUploadResult.message,
                     [CommandResponseData]: ''
                 }
             }
