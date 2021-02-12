@@ -151,7 +151,7 @@ export class IoTCentralDevice {
 
                 switch (setting) {
                     case SettingFilenameSuffix:
-                        this.log(`Updating setting: ${setting} with value: ${value}`);
+                        this.log(`Updating setting: ${setting} with value: ${JSON.stringify(value)}`);
 
                         // NOTE: validation should be in place for legal folder names
                         patchedProperties[setting] = this.deviceSettings[setting] = value || moment.utc().format('YYYYMMDD-HHmmss');
@@ -204,7 +204,7 @@ export class IoTCentralDevice {
         this.log(`Updating twin properties: ${JSON.stringify(properties, null, 4)}`);
 
         try {
-            await new Promise((resolve, reject) => {
+            await new Promise<void>((resolve, reject) => {
                 this.deviceTwin.properties.reported.update(properties, (error) => {
                     if (error) {
                         return reject(error);
