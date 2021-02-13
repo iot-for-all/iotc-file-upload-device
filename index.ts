@@ -1,3 +1,4 @@
+import './env';
 import {
     type as osType,
     cpus as osCpus,
@@ -7,7 +8,7 @@ import {
 import { IoTCentralDevice } from './device';
 
 function log(message: string) {
-    // tslint:disable-next-line:no-console
+    // eslint-disable-next-line no-console
     console.log(message);
 }
 
@@ -47,6 +48,6 @@ async function start() {
     }
 }
 
-(async () => {
+void (async () => {
     await start();
 })().catch();
