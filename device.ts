@@ -20,7 +20,7 @@ import {
 import * as moment from 'moment';
 import { log } from 'util';
 
-const dpsProvisioningHost: string = 'global.azure-devices-provisioning.net';
+const dpsProvisioningHost = 'global.azure-devices-provisioning.net';
 
 const CommandUploadFile = 'COMMAND_UPLOAD_FILE';
 const TelemetrySystemHeartbeat = 'TELEMETRY_SYSTEM_HEARTBEAT';
@@ -100,7 +100,7 @@ export class IoTCentralDevice {
         return connectionString;
     }
 
-    public async connectDeviceClient(connectionString: string) {
+    public async connectDeviceClient(connectionString: string): Promise<void> {
         try {
             this.deviceClient = await IoTDeviceClient.fromConnectionString(connectionString, Mqtt);
             if (!this.deviceClient) {
@@ -139,7 +139,7 @@ export class IoTCentralDevice {
             const patchedProperties = {};
 
             for (const setting in desiredChangedSettings) {
-                if (!desiredChangedSettings.hasOwnProperty(setting)) {
+                if (!Object.prototype.hasOwnProperty.call(desiredChangedSettings, setting)) {
                     continue;
                 }
 
@@ -163,11 +163,8 @@ export class IoTCentralDevice {
                 }
             }
 
-            for (const key in patchedProperties) {
-                if (patchedProperties.hasOwnProperty(key)) {
-                    await this.updateDeviceProperties(patchedProperties);
-                    break;
-                }
+            if (Object.keys(patchedProperties).length) {
+                await this.updateDeviceProperties(patchedProperties);
             }
         }
         catch (ex) {
@@ -210,7 +207,7 @@ export class IoTCentralDevice {
                         return reject(error);
                     }
 
-                    return resolve();
+                    return resolve('');
                 });
             });
         }

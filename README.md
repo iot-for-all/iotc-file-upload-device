@@ -14,7 +14,7 @@ This sample demonstrates how to use the file upload feature of IoT Hub from with
 
 ## Prerequisites
 * [Node.js](https://nodejs.org/en/download/)
-* [Visual Studio Code](https://code.visualstudio.com/Download) with [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) extension installed
+* [Visual Studio Code](https://code.visualstudio.com/Download) with [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension installed, or a command line will work.
 * [Azure Blob Storage account](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal)
 * [IoT Central Application](https://docs.microsoft.com/en-us/azure/iot-central/core/quick-deploy-iot-central)
 
@@ -66,12 +66,12 @@ In your IoT Central application create a new device based on your new template a
   * Copy the values for "ID scope", "Device ID", and "Primary key". You will use these values in the device sample code.
 
 ## Run the sample code
-Create a ".env" file at the root of your project and add the values you copied above. The file should look like the sample below with your own values. NOTE: the modelId is copied from the */setup/DeviceDcm.json* file.
+Create a ".env" file at the root of your project and add the values you copied above. The file should look like the sample below with your own values. NOTE: the modelId is copied from the */setup/FileUploadDeviceDcm.json* file.
 ```
 scopeId=<YOUR_SCOPE_ID>
 deviceId=<YOUR_DEVICE_ID>
 deviceKey=<YOUR_PRIMARY_KEY>
-modelId=urn:IoTCentral:IotCentralFileUploadDevice:1
+modelId=dtmi:IoTCentral:IotCentralFileUploadDevice;1
 ```
 
 Now you are ready to run the sample. Press F5 to run/debug the sample. In your terminal window you should see that the device is registered and is connected to IoT Central:
