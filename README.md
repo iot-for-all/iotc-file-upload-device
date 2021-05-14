@@ -28,7 +28,7 @@ npm i
 Open the cloned repository with VS Code.
 
 ## Create an IoT Central application
-Follow the instructions to [c-reate an IoT Central application](https://docs.microsoft.com/en-us/azure/iot-central/core/quick-deploy-iot-central) and associate the application with your Azure Storage account. Create a new device template using the included file upload device sample template.
+Follow the instructions to [create an IoT Central application](https://docs.microsoft.com/en-us/azure/iot-central/core/quick-deploy-iot-central) and associate the application with your Azure Storage account. Create a new device template using the included file upload device sample template.
 * From the left pane in your IoT Central Application select "Device templtes"
 * At the top of the device templates view select the "+ New" option to create a new template
 * Select the "IoT Device" option
