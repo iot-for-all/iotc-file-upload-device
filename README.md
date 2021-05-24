@@ -28,7 +28,7 @@ npm i
 Open the cloned repository with VS Code.
 
 ## Create an IoT Central application
-Follow the instructions to create an IoT Central application and associate the application with your Azure Storage account. Create a new device template using the included file upload device sample template.
+Follow the instructions to [create an IoT Central application](https://docs.microsoft.com/en-us/azure/iot-central/core/quick-deploy-iot-central) and associate the application with your Azure Storage account. Create a new device template using the included file upload device sample template.
 * From the left pane in your IoT Central Application select "Device templtes"
 * At the top of the device templates view select the "+ New" option to create a new template
 * Select the "IoT Device" option
@@ -64,6 +64,8 @@ In your IoT Central application create a new device based on your new template a
 * In the device list select your new device
 * In the device view select the "Connect" option at the top of the screen
   * Copy the values for "ID scope", "Device ID", and "Primary key". You will use these values in the device sample code.
+
+To learn more, see [Add a device in IoT Central application.](https://docs.microsoft.com/en-us/azure/iot-central/core/howto-manage-devices#add-a-device)
 
 ## Run the sample code
 Create a ".env" file at the root of your project and add the values you copied above. The file should look like the sample below with your own values. NOTE: the modelId is copied from the */setup/FileUploadDeviceDcm.json* file.
